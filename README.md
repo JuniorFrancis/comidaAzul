@@ -3,9 +3,9 @@ Inspired by ifood
 
 Configs used :gear: -> <br>
 {
-:coffee: Java: 11.0.11
-:elephant: Gradle: 6.3 
-:leaves: SpringBoot: 2.3.12
-:green_square: ThymeLeaf: 
-:red_circle: Lombok:1.8.20
+:coffee: Java: 11.0.11 <br>
+:elephant: Gradle: 6.3 <br>
+:leaves: SpringBoot: 2.3.12 <br>
+:green_square: ThymeLeaf: <br>
+:red_circle: Lombok:1.8.20 <br>
 }
