@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style/bf_style.css">
+    <title>SoftBlue - BlueFood</title>
+</head>
+<body>
+    <header>
+        <div id ="divLogotipoSistema">
+            <span id="spanAuxiliarAlinhamento"></span>
+            <a href="#"> 
+                <img src="images/bf_logotiposistema.png" id="imgLogotipoSistema" onClick="location.href='index.html'">
+            </a>
+        </div>
+    </header>
+    <br><br>
+
+    <!-- Cabeçalho - FIM -->
+
+    <div>
+        <img src="images/bf_iconeUsuario.png" id="imgIconeUsuario">
+        <h1>Autenticação</h1>
+        <form method="POST" action="">
+            <fieldset>
+                <input type="text" name="email" placeholder="Insira seu e-mail!">
+                <input type="password" name="password" placeholder="Insira sua senha!">
+                <input type="button" name="submit" value="Entrar" onclick="location.href='clienteHome.html'">
+            </fieldset>
+        </form>
+        <br>
+        <div id="mensagemErro">
+            Mensagem de erro!
+        </div>
+
+        <input type="button" value="Gostaria de criar minha conta!" onclick="location.href='clienteCadastro.html'">
+        <br>
+        <input type="button" value="Gostaria de criar minha conta de restaurante!" onclick="location.href='restauranteCadastro.html'">
+    </div>
+    <!-- Rodapé - Inicio -->
+
+</body>
+</html>

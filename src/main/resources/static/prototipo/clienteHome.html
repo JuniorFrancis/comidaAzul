@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style/bf_style.css">
+    <title>SoftBlue - BlueFood</title>
+</head>
+<body>
+    <header>
+        <div id ="divLogotipoSistema">
+            <span id="spanAuxiliarAlinhamento"></span>
+            <a href="#"> 
+                <img src="images/bf_logotiposistema.png" id="imgLogotipoSistema" onclick="location.href='clienteHome.html'">
+            </a>
+        </div>
+
+        <div id="divUsuarioLogado">
+            Olá Nome Usuário
+            <br>
+            <img src="images/bf_iconeCarrinho.png" id="imgIconeCarrinho" onclick="location.href='clienteCarrinho.html'">
+        </div>
+
+    </header>
+    <br><br>
+   
+    <!-- Cabeçalho - FIM -->
+    
+    <div>
+        <h1>É hora de lanchar!</h1>
+        <form method="POST" action="">
+            <fieldset>
+                <input type="busca" name="busca" placeholder="O que deseja?">
+                <input type="button" name="procurar" value="Buscar" placeholder="Buscar" onclick="location.href='clienteBusca.html'">
+            </fieldset>
+        </form>
+    </div>
+
+    <div id="divCategoriasComidaGeral">
+        <div id="divCategoriasComidaOpcao">
+            <a href="#">
+                <img src="images/sys_categoriaChurrasco.png">
+                <br>
+                <span>Churrasco</span>
+            </a>
+        </div>
+        <div id="divCategoriasComidaOpcao"> 
+            <a href="#">
+                <img src="images/sys_categoriaHamburguer.png">
+                <br>
+                <span>Hamburguer</span>
+            </a>
+        </div>
+        <div id="divCategoriasComidaOpcao">
+            <a href="" >
+                <img src="images/sys_categoriaPizza.png">
+                <br>
+                <span>Pizza</span>
+            </a>
+        </div>
+        <div id="divCategoriasComidaOpcao">
+            <a href="#">
+                <img src="images/sys_categoriaSalada.png">
+                <br>
+                <span>Salada</span>
+            </a>
+        </div>
+        <div id="divCategoriasComidaOpcao">
+            <a href="#">
+                <img src="images/sys_categoriaSobremesa.png">
+                <br>
+                <span>Sobremesas</span>
+            </a>
+        </div>
+    </div>
+
+    <div>
+        <h1>Cupons disponíveis</h1>
+        <input type="button" value="10% Hamburguer"><br>
+        <input type="button" value="10% Pizza"><br>
+    </div>
+
+    <div>
+        <h1>Últimos Pedidos</h1>
+        <input type="button" value="#15124 McBunalds"><br>
+        <input type="button" value="#35464 Blue Pizza"><br>
+        <input type="button" value="#15478 Hard Blue"><br>
+    </div>
+
+    <div>
+        <h1>Conta</h1>
+        <input type="button" value="Meus Dados"><br>
+        <input type="button" value="Sair" onclick="location.href='index.html'">
+    </div>
+
+    <!-- Rodapé - Inicio -->
+
+</body>
+</html>

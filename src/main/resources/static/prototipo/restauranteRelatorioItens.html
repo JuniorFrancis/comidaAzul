@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style/bf_style.css" onclick="location.href='restauranteHome.html'">
+    <title>SoftBlue - BlueFood</title>
+</head>
+<body>
+    <header>
+        <div id ="divLogotipoSistema">
+            <span id="spanAuxiliarAlinhamento"></span>
+            <a href="#"> 
+                <img src="images/bf_logotiposistema.png" id="imgLogotipoSistema">
+            </a>
+        </div>
+        <div id="divUsuarioLogado">
+            Olá Nome Usuário
+        </div>
+
+    </header>
+    <br><br>
+
+    <!-- Cabeçalho - FIM -->
+    <div>
+        <h1>Relatório de itens</h1>
+        <fieldset id="fieldsetFiltros">
+            <legend>Filtros</legend>
+            <label for="numero">Item: </label><br>
+            <input type="text" name="numero" id="numero"><br>
+
+            <label for="inicio">Início: </label><br>
+            <input type="date" name="inicio" id="inicio"><br>
+
+            <label for="fim">Fim: </label><br>
+            <input type="date" name="fim" id="fim">
+        </fieldset>
+    </div>
+    <br><br>
+
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Quantidade</th>
+            <th>Faturamento</th>
+        </tr>
+        <tr>
+            <td>Hamburguer</td>
+            <td>25</td>
+            <td>R$ 355.00</td>
+        </tr>
+        <tr>
+            <td>Pizza</td>
+            <td>134</td>
+            <td>R$ 1256,00</td>
+        </tr>
+        <tr>
+            <td>Salada</td>
+            <td>12</td>
+            <td>R$ 321.00</td>
+        </tr>
+    </table><br><br>
+
+    <input type="button" value="Voltar" onclick="location.href='restauranteHome.html'"> 
+   
+    
+
+ <!-- Rodapé - Ínicio -->
+ 
+</body>
+</html>
