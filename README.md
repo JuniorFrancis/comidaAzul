@@ -1,7 +1,7 @@
 # comidaAzul_
 Inspired by ifood
 
-Configs used :gear: ->
+Configs used :gear: -> <br>
 {
 :coffee: Java: 11.0.11
 :elephant: Gradle: 6.3 
