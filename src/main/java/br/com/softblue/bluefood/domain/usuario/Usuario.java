@@ -25,6 +25,8 @@ public class Usuario implements Serializable{
 	public String email;
 	@Column(length = 80, nullable=false)
 	public String telefone;
+	@Column(nullable=false)
+	public String senha;
 	
 	@EqualsAndHashCode.Include
 	@Id

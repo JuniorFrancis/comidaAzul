@@ -16,10 +16,10 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper=true)
 public class Cliente extends Usuario{
 
-	@Column(length = 8, nullable=false)
+	@Column(nullable=false)
 	public String CPF;
 	
-	@Column(length = 11, nullable=false)
+	@Column(nullable=false)
 	public String CEP;
 	
 
