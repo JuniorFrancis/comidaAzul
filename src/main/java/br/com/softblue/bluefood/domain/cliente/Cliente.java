@@ -2,6 +2,8 @@ package br.com.softblue.bluefood.domain.cliente;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import br.com.softblue.bluefood.domain.usuario.Usuario;
 import lombok.EqualsAndHashCode;
@@ -16,10 +18,15 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper=true)
 public class Cliente extends Usuario{
 
-	@Column(nullable=false)
+	@Column(nullable=false, length=11)
+	@NotBlank(message="O CPF não pode ser vazio!")
+	@Pattern(regexp = "[0-9] {11}", message = "O CPF possuí formato inválido!") 
 	public String CPF;
 	
-	@Column(nullable=false)
+	
+	@NotBlank(message= "O CEP não pode ser vazio!")
+	@Pattern(regexp = "[0-9] {8}", message = "O CEP possuí tamanho inválido!")
+	@Column(nullable=false, length=11)
 	public String CEP;
 	
 

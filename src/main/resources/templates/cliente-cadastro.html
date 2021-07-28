@@ -7,7 +7,8 @@
 	 <div layout:fragment="content">
 
     <script>
-        function isNumberKey(evt)        {
+        function isNumberKey(evt)        
+        {
             var charCode = (evt.which) ? evt.which : evt.keyCode;
 
             if(charCode > 31 && (charCode < 48 || charCode > 57))
@@ -17,27 +18,9 @@
             }
             else
             {
-                return true;
-                
+                return true;        
             }
         }
-
-        function validarFormulario()
-        {
-            var validacao = true; 
-            var conteudo_nome = document.forms["form_cadastro"].nome.value;
-            if(conteudo_nome == "")
-            {
-                alert("É necessário preencher o campo nome!");
-                validacao = false;
-                return;
-            }else
-            {
-                alert("Dados Válidos");
-                document.forms["form_cadastro"].submit();
-            }
-        }
-
 
     </script>
     <br><br>
@@ -47,41 +30,63 @@
     
     <div>
         <h1>Cadastro de Clientes</h1>
-        <div id="mensagemSucesso">
-            Exemplo de mensagem de sucesso!
+        <div id="mensagemSucesso" th:if="${msg != null}">
+            <span th:text="${msg}"></span>
         </div>
         <br/>
     
     	<!-- th:object="tal" / esta tag está vinculada ao campo form dizendo que seus atributos será vinculado ao objeto cliente --> 
-        <form method="post" th:object="${cliente}" th:action="@{/public/cliente/save}" id="form_cadastro">
+        <form method="post" th:object="${cliente}" th:action="${!editMode} ? @{/public/cliente/save} : @{/cliente/save}" id="form_cadastro">
             <fieldset>
+            	<input type="hidden" th:field="*{id}"/>
+            	
                 <label for="nome">Nome: </label><br>
-                <input type="text" id="nome" name="nome" placeholder="Nome..." th:field="*{nome}"/>
+                <input type="text" id="nome" name="nome" placeholder="Nome..." th:field="*{nome}" 
+                th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''" />
                 <br><br>
-               <!-- <div id="mensagemErro">
-                    Mensagem de erro!
-                </div>
-				 --> 
+               <div id="mensagemErro" th:if="${#fields.hasErrors('nome')}">
+                    <span th:errors="*{nome}"></span>
+                </div> 
+                
                 <label for="cpf">CPF: </label><br>
-                <input type="text" id="cpf" nome="cpf" placeholder="CPF..." onkeypress="return isNumberKey(event)" th:field="*{CPF}"/>
+                <input type="text" id="cpf" name="cpf" placeholder="CPF..." onkeypress="return isNumberKey(event)" th:field="*{CPF}" 
+                th:classappend="${#fields.hasErrors('CPF')} ? 'inputError' : ''"/>
                 <br><br>
-
+				<div id="mensagemErro" th:if="${#fields.hasErrors('CPF')}">
+					<span th:errors="*{CPF}"></span>
+				</div>
+				
                 <label for="email">E-mail: </label><br>
-                <input type="email" id="email" nome="email" placeholder="E-mail..." th:field="*{email}"/>
+                <input type="email" id="email" name="email" placeholder="E-mail..." th:field="*{email}"
+                th:classappend="${#fields.hasErrors('email')} ? 'inputError' : ''"/>
                 <br><br>
+                <div id="mensagemErro" th:if="${#fields.hasErrors('email')}">
+                	<span th:errors="*{email}"></span>
+                </div>
 
                 <label for="telefone">Telefone: </label><br>
-                <input type="text" id="telefone" nome="telefone" placeholder="Telefone..." onkeypress="return isNumberKey(event)" th:field="*{telefone}"/>
+                <input type="text" id="telefone" name="telefone" placeholder="Telefone..." onkeypress="return isNumberKey(event)" th:field="*{telefone}"
+                th:classappend="${#fields.hasErrors('telefone')} ? 'inputError' : ''"/>
                 <br><br>
+				<div id="mensagemErro" th:if="${#fields.hasErrors('telefone')}">
+					<span th:errors="*{telefone}"></span>
+				</div>
 				
 				<label for="cep">CEP: </label><br>
-                <input type="text" id="CEP" nome="CEP" placeholder="CEP..." th:field="*{CEP}"/>
+                <input type="text" id="CEP" name="CEP" placeholder="CEP..." onkeypress="return isNumberKey(event)" th:field="*{CEP}"
+                th:classappend="${#fields.hasErrors('CEP')} ? 'inputError' : ''"/>
 				<br><br>
+				<div id="mensagemErro" th:if="${#fields.hasErrors('CEP')}">
+				<span th:errors="*{CEP}"></span>
+				</div>
                 <label for="senha">Senha: </label><br>
-                <input type="password" id="senha" nome="senha" placeholder="Senha..." th:field="*{senha}"/>
+                <input type="password" id="senha" name="senha" placeholder="Senha..." th:field="*{senha}"
+                th:classappend="${#fields.hasErrors('senha')} ? 'inputError' : ''"/>
                 <br><br>
-
-                <input type="submit" value="Cadastrar" /> 
+				<div id="mensagemErro" th:if="${#fields.hasErrors('senha')}">
+					<span th:errors="*{senha}"></span>
+				</div>
+                <input type="submit" th:value="${!editMode} ? 'Cadastrar' : 'Alterar'" /> 
             </fieldset>
         </form>
         <br>

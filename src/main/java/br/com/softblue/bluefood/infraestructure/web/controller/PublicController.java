@@ -1,5 +1,7 @@
 package br.com.softblue.bluefood.infraestructure.web.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import br.com.softblue.bluefood.domain.cliente.Cliente;
 
 
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 
 @Controller
 @RequestMapping(path = "/public")
@@ -24,21 +27,25 @@ public class PublicController {
 	public String CadastroCliente(Model model)
 	{
 		model.addAttribute("cliente", new Cliente());
+		ControllerHelper.setEditMode(model, false);
 		return "cliente-cadastro";
 	}
 	
+	
 	@PostMapping(path = "/cliente/save")
-	public String saveCliente(@ModelAttribute("cliente") Cliente cliente)
+	public String saveCliente(
+			@ModelAttribute("cliente") @Valid Cliente cliente,
+			Errors errors,
+			Model model)
 	{
-		clienteService.saveCliente(cliente);
+		if(!errors.hasErrors())
+		{
+			clienteService.saveCliente(cliente);
+			model.addAttribute("msg", "Cliente cadastrado com sucesso!");
+		}
+		ControllerHelper.setEditMode(model, false);
 		return "cliente-cadastro";
 		
 	}
 	
-	@GetMapping(path= "/restaurante/new")
-	public String CadastroRestaurante()
-	{
-		return "restaurante-cadastro";
-	}
-
 }
