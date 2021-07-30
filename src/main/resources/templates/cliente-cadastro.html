@@ -47,7 +47,6 @@
                <div id="mensagemErro" th:if="${#fields.hasErrors('nome')}">
                     <span th:errors="*{nome}"></span>
                 </div> 
-                
                 <label for="cpf">CPF: </label><br>
                 <input type="text" id="cpf" name="cpf" placeholder="CPF..." onkeypress="return isNumberKey(event)" th:field="*{CPF}" 
                 th:classappend="${#fields.hasErrors('CPF')} ? 'inputError' : ''"/>

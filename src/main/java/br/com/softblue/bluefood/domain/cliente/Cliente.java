@@ -20,7 +20,7 @@ public class Cliente extends Usuario{
 
 	@Column(nullable=false, length=11)
 	@NotBlank(message="O CPF não pode ser vazio!")
-	@Pattern(regexp = "[0-9] {11}", message = "O CPF possuí formato inválido!") 
+	@Pattern(regexp = "{11} [0,9]", message = "O CPF possuí formato inválido!") 
 	public String CPF;
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.softblue.bluefood.application.ClienteService;
+import br.com.softblue.bluefood.application.ValidationException;
 import br.com.softblue.bluefood.domain.cliente.Cliente;
 
 
@@ -40,8 +41,13 @@ public class PublicController {
 	{
 		if(!errors.hasErrors())
 		{
-			clienteService.saveCliente(cliente);
-			model.addAttribute("msg", "Cliente cadastrado com sucesso!");
+			try{
+				clienteService.saveCliente(cliente);
+				model.addAttribute("msg", "Cliente cadastrado com sucesso!");
+			}catch (ValidationException e)
+			{
+				errors.rejectValue("email", null, e.getMessage());
+			}
 		}
 		ControllerHelper.setEditMode(model, false);
 		return "cliente-cadastro";
