@@ -19,6 +19,13 @@ public class ClienteService {
 			throw new ValidationException("Já existe um e-mail igual a este cadastrado!");
 		}
 		
+		if(cliente.id != null){
+			Cliente clienteDB = clienteRepository.findById(cliente.getId()).orElseThrow();
+			cliente.setSenha(clienteDB.getSenha());
+		}else{
+			cliente.encryptPassword();
+		}
+		
 		clienteRepository.save(cliente);
 		
 	}

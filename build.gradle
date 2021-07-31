@@ -27,6 +27,11 @@ dependencies {
 	runtimeOnly 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	
 	
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//runtimeOnly 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+
+	
 	//IMPLEMENTAÇÃO SPRINGBOOT TOOLS - FERRAMENTAS SPRING PARA DESENVOLVIMENTO WEB
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
