@@ -29,6 +29,8 @@ public class PublicController {
 	{
 		model.addAttribute("cliente", new Cliente());
 		ControllerHelper.setEditMode(model, false);
+		
+		
 		return "cliente-cadastro";
 	}
 	
@@ -49,7 +51,7 @@ public class PublicController {
 				errors.rejectValue("email", null, e.getMessage());
 			}
 		}
-		ControllerHelper.setEditMode(model, false);
+		ControllerHelper.setEditMode(model, true);
 		return "cliente-cadastro";
 		
 	}

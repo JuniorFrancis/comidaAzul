@@ -29,6 +29,8 @@ public class Cliente extends Usuario{
 	@Column(nullable=false, length=11)
 	public String CEP;
 	
+	//TODO Verificar o porque de o Pattern estar invalidando todo text inserido nos campos.
+	
 
 	
 }
