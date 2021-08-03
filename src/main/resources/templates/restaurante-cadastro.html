@@ -1,33 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en" 
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
 
 <body>
 	<div layout:fragment="content">
 		<div>
 			<h1>Cadastro de Restaurantes</h1>
-			<div id="mensagemSucesso">Exemplo de mensagem de sucesso!</div>
+	   	<div id="mensagemSucesso" th:if="${msg != null}">
+            <span th:text="${msg}"></span>
+        </div>
 
-			<form method="POST" action="">
+			<form method="POST" th:object="${restaurante}" ><!--  th:action="${!editMode} ? @{/public/restaurante/save} : @{/restaurante/save}" -->
 				<fieldset>
-					<label for="nome">Nome: </label><br/> <input type="text"
-						id="nome" name="nome" placeholder="Nome..."> <br//>
-					<br/>
-					<div id="mensagemErro">Mensagem de erro!</div>
-
-					<label for="cnpj">CNPJ: </label><br/> <input type="text"
-						id="cnpj" nome="cnpj" placeholder="CNPJ..."> <br//>
-					<br/> <label for="email">E-mail: </label><br///> <input
-						type="email" id="email" nome="email" placeholder="E-mail...">
-					<br/>
-					<br/> <label for="telefone">Telefone: </label><br/> <input
-						type="text" id="telefone" nome="telefone"
-						placeholder="Telefone..."> <br/>
+					<input type="hidden" th:field="*{id}"/>
+				
+					<label for="nome">Nome: </label>
 					<br/> 
+					<input type="text" id="nome" name="nome" placeholder="Nome..." th:field="*{nome}"
+					th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : ''"> 
+					<br/>
+					<div id="mensagemErro" th:if="${#fields.hasErrors('nome')}">
+						<span th:errors="*{nome}"></span>
+					</div>
+					<br/>
+
+					<label for="cnpj">CNPJ: </label>
+					<br/>
+					<input type="text" id="cnpj" name="cnpj" placeholder="CNPJ..." th:field="*{cnpj}"
+					th:classappend="${#fields.hasErrors('cnpj') ? 'inputError' : ''}">
+					<br/>
+					<div id="mensagemErro" th:if="${#fields.hasErrors('cnpj')}">
+						<span th:errors="*{cnpj}"></span>
+					</div> 
+					<br/>					
+					
+					<label for="email">E-mail: </label>
+					<br/>
+					<input type="email" id="email" name="email" placeholder="E-mail..." th:field="*{email}"
+					th:classappend="${#fields.hasErrors('email')} ? 'inputError' : '' "/>
+					<br/>
+					<div id="mensagemErro" th:if="${#fields.hasErrors('email')}">
+						<span th:errors="*{email}"></span>
+					</div>
+					<br/>
+					
+					<label for="telefone">Telefone: </label>
+					<br/>
+					<input type="text" id="telefone" name="telefone" placeholder="Telefone..." th:field="*{telefone}"
+					th:classappend="${#fields.hasErrors('telefone')} ? 'inputError' : ''"/> 
+					<br/>
+					<div id="mensagemErro" th:if="${#fields.hasErrors('telefone')}">
+						<span th:errors="*{telefone}"></span>
+					</div>
+					<br/>
+				<!-- 	 
 					<label for="cep">CEP: </label>
 					<br/> 
-					<input type="text" id="cep" name="cep" placeholder="CEP..."/> <br/>
-					<br/> 
+					<input type="text" id="cep" name="CEP" placeholder="CEP..." th:field="*{CEP}"
+					th:classappend="${#fields.hasErrors('CEP')} ? 'inputError' : ''"/>
+					<br/><br/> 
+					<div id="mensagemErro" th:if="${#fields.hasErrors('CEP')}">
+						<span th:errors="*{CEP}"></span>
+					</div>
+					<br/>
+				-->
 					<label for="categoria">Categoria de comida: </label><br/>
 					<select id="categoria" nome="categoria">
 						<option>Salada</option>
@@ -35,23 +72,33 @@
 						<option>Pizza</option>
 						<option>Hamburguer</option>
 					</select>
-					<br/> <br/> 
+					<br/> 
+					
+					
 					<label for="logotipo">Logotipo: </label><br/> 
 					<input type="file" id="logotipo" placeholder="Selecionar..."/> 
-					<br/><br/>
+					<br/>
+					
+					
 					<label for="senha">Senha: </label>
 					<br/> 
-					<input type="password" id="senha" nome="senha" placeholder="Senha..."/>
-					<br/><br/>
-
-					<div>Exemplo mensagem de erro!</div>
-					<br/> <input type="button" value="Cadastrar" />
+					<input type="password" id="senha" name="senha" placeholder="Senha..." th:field="*{senha}"
+					th:classappend="${#fields.hasErrors('senha')} ? 'inputError' : ''"/>
+					<br/>
+					<div id="mensagemErro" th:if="${#fields.hasErrors('senha')}">
+						<span th:errors="*{senha}"></span>
+					</div>
+					
+					<br/> 
+					<input type="submit" th:value="${!editMode} ? 'Cadastrar' : 'Alterar'"  />
 				</fieldset>
 			</form>
 			<br/>
 			<form method="get" th:action="@{/login}">
 			<input type="submit" value="Voltar"	/>
 			</form> 
+			
+			
 			
 		</div>
 	</div>

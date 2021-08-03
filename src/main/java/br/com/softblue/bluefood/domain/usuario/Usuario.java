@@ -33,7 +33,7 @@ public class Usuario implements Serializable{
 	public String email;
 	
 	@NotBlank(message = "O telefone não pode ser vazio!")
-	@Pattern(regexp = "[0-9] {11}", message ="O telefone possui formato errado!")
+	//@Pattern(regexp = "[0-9] {11}", message ="O telefone possui formato errado!")
 	@Column(length=11,nullable=false)
 	@Size(max = 11, message = "O número de telefone é muito grande")
 	public String telefone;

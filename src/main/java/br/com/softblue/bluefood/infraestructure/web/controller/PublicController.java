@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.softblue.bluefood.application.ClienteService;
+import br.com.softblue.bluefood.application.RestauranteService;
 import br.com.softblue.bluefood.application.ValidationException;
 import br.com.softblue.bluefood.domain.cliente.Cliente;
-
+import br.com.softblue.bluefood.domain.restaurante.Restaurante;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,6 +24,7 @@ public class PublicController {
 	
 	@Autowired
 	ClienteService clienteService;
+	RestauranteService restauranteService;
 	
 	@GetMapping(path= "/cliente/new")
 	public String CadastroCliente(Model model)
@@ -31,8 +33,7 @@ public class PublicController {
 		ControllerHelper.setEditMode(model, false);
 		return "cliente-cadastro";
 	}
-	
-	
+
 	@PostMapping(path = "/cliente/save")
 	public String saveCliente(
 			@ModelAttribute("cliente") @Valid Cliente cliente,
@@ -49,8 +50,37 @@ public class PublicController {
 				errors.rejectValue("email", null, e.getMessage());
 			}
 		}
-		ControllerHelper.setEditMode(model, false);
+		ControllerHelper.setEditMode(model, true);
 		return "cliente-cadastro";
+		
+	}
+	
+	@GetMapping(path= "/restaurante/new")
+	public String CadastroRestaurante(Model model)
+	{
+		model.addAttribute("restaurante", new Restaurante());
+		ControllerHelper.setEditMode(model, false);
+		return "restaurante-cadastro";
+	}
+	
+	@PostMapping(path = "/restaurante/save")
+	public String saveRestaurante(
+			@ModelAttribute("restaurante") @Valid Restaurante restaurante,
+			Errors errors,
+			Model model)
+	{
+		if(!errors.hasErrors())
+		{
+			try{
+				restauranteService.saveRestaurante(restaurante);
+				model.addAttribute("msg", "Restaurante cadastrado com sucesso!");
+			}catch (ValidationException e)
+			{
+				errors.rejectValue("email", null, e.getMessage());
+			}
+		}
+		ControllerHelper.setEditMode(model, true);
+		return "restaurante-cadastro";
 		
 	}
 	
