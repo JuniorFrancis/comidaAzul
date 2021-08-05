@@ -11,7 +11,7 @@
             <span th:text="${msg}"></span>
         </div>
 
-			<form method="POST" th:object="${restaurante}" ><!--  th:action="${!editMode} ? @{/public/restaurante/save} : @{/restaurante/save}" -->
+			<form method="POST" th:object="${restaurante}" th:action="${!editMode} ? @{/public/restaurante/save} : @{/restaurante/save}" id="form_cadastro">
 				<fieldset>
 					<input type="hidden" th:field="*{id}"/>
 				
