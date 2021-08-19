@@ -54,25 +54,15 @@
 						<span th:errors="*{telefone}"></span>
 					</div>
 					<br/>
-				<!-- 	 
-					<label for="cep">CEP: </label>
-					<br/> 
-					<input type="text" id="cep" name="CEP" placeholder="CEP..." th:field="*{CEP}"
-					th:classappend="${#fields.hasErrors('CEP')} ? 'inputError' : ''"/>
-					<br/><br/> 
-					<div id="mensagemErro" th:if="${#fields.hasErrors('CEP')}">
-						<span th:errors="*{CEP}"></span>
-					</div>
-					<br/>
-				-->
 					<label for="categoria">Categoria de comida: </label><br/>
-					<select id="categoria" nome="categoria">
-						<option>Salada</option>
-						<option>Churrasco</option>
-						<option>Pizza</option>
-						<option>Hamburguer</option>
+					<select id="categoria" name="categoria" multiple="multiple" th:field="*{categorias}" style="height: 90px;" 
+					th:classappend="${#fields.hasErrors('categorias')} ? 'inputError' : ''" >
+						<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}">Salada</option>
 					</select>
-					<br/> 
+					<div id="mensagemErro" th:if="${#fields.hasErrors('categorias')}">
+						<span th:errors="categorias"></span>
+					</div>T
+					<br/><br/> 	
 					
 					
 					<label for="logotipo">Logotipo: </label><br/> 

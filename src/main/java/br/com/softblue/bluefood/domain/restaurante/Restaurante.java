@@ -21,6 +21,7 @@ import br.com.softblue.bluefood.domain.usuario.Usuario;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @SuppressWarnings("serial")
 @Entity
@@ -54,6 +55,8 @@ public class Restaurante extends Usuario {
 			joinColumns = @JoinColumn(name = "restaurante_id"),
 			inverseJoinColumns = @JoinColumn(name = "categoria_restaurante_id")
 			)
+	@Size(min = 1, message = "O restaurante precisa ter no mínimo uma categoria associada")
+	@ToString.Exclude
 	private Set<CategoriaRestaurante> categorias = new HashSet<CategoriaRestaurante>(0);
 	
 	
